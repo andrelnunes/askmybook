@@ -16,7 +16,6 @@ brew install postgresql
 
 See https://github.com/psycopg/psycopg2/issues/1200
 
-
 3. Turn your PDF into embeddings for GPT-3:
 
 ```
@@ -33,10 +32,10 @@ python manage.py collectstatic
 
 5. Other things to update:
 
-- Book title
-- Book cover image
-- URL to purchase book
-- Author name and bio
+-   Book title
+-   Book cover image
+-   URL to purchase book
+-   Author name and bio
 
 ## Deploy to Heroku
 
@@ -55,7 +54,7 @@ git push heroku main
 heroku ps:scale web=1
 heroku run python manage.py migrate
 heroku open
-heroku domains:add askmybook.com
+heroku domains:add askmybook.com -> configure your specific domain
 ```
 
 Note that this repo does not contain the `pages.csv` and `embeddings.csv` you'll need, generated above. You can remove `.csv` from your own `.gitignore` and push them manually via `git push heroku main`.

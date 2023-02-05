@@ -11,13 +11,13 @@ import pandas as pd
 import openai
 import numpy as np
 
-from resemble import Resemble
+#from resemble import Resemble
 
 import os
 
 load_dotenv('.env')
 
-Resemble.api_key(os.environ["RESEMBLE_API_KEY"])
+#Resemble.api_key(os.environ["RESEMBLE_API_KEY"])
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 COMPLETIONS_MODEL = "text-davinci-003"
@@ -169,9 +169,9 @@ def ask(request):
     answer, context = answer_query_with_context(question_asked, df, document_embeddings)
 
     project_uuid = '6314e4df'
-    voice_uuid = '0eb3a3f1'
+    #voice_uuid = '0eb3a3f1'
 
-    response = Resemble.v2.clips.create_sync(
+    """ response = Resemble.v2.clips.create_sync(
         project_uuid,
         voice_uuid,
         answer,
@@ -183,9 +183,11 @@ def ask(request):
         is_public=None,
         is_archived=None,
         raw=None
-    )
+    ) """
 
-    question = Question(question=question_asked, answer=answer, context=context, audio_src_url=response['item']['audio_src'])
+    audio_fake_url = "https://cdn.pixabay.com/download/audio/2021/08/04/audio_bb630cc098.mp3?filename=short-success-sound-glockenspiel-treasure-video-game-6346.mp3"
+    # question = Question(question=question_asked, answer=answer, context=context, audio_src_url=response['item']['audio_src'])
+    question = Question(question=question_asked, answer=answer, context=context, audio_src_url=audio_fake_url)
     question.save()
 
     return JsonResponse({ "question": question.question, "answer": answer, "audio_src_url": question.audio_src_url, "id": question.pk })
