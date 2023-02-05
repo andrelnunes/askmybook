@@ -146,7 +146,7 @@ def answer_query_with_context(
     return response["choices"][0]["text"].strip(" \n"), context
 
 def index(request):
-    return render(request, "index.html", { "default_question": "What is The Minimalist Entrepreneur about?" })
+    return render(request, "index.html", { "default_question": "What is this book about?" })
 
 @csrf_exempt
 def ask(request):
