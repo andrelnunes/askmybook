@@ -27,14 +27,14 @@ MODEL_NAME = "curie"
 DOC_EMBEDDINGS_MODEL = f"text-search-{MODEL_NAME}-doc-001"
 QUERY_EMBEDDINGS_MODEL = f"text-search-{MODEL_NAME}-query-001"
 
-MAX_SECTION_LEN = 500
+MAX_SECTION_LEN = 1000
 SEPARATOR = "\n* "
 separator_len = 3
 
 COMPLETIONS_API_PARAMS = {
     # We use temperature of 0.0 because it gives the most predictable, factual answer.
     "temperature": 0.0,
-    "max_tokens": 150,
+    "max_tokens": 256,
     "model": COMPLETIONS_MODEL,
 }
 
